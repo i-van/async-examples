@@ -11,7 +11,7 @@ function AsyncAray(data) {
  * @param {string} index
  * @param {Function} done
  */
-AsyncAray.prototype.get = function(index, done) {
+AsyncAray.prototype.getByIndex = function(index, done) {
     var _this = this;
 
     process.nextTick(function() {
@@ -22,7 +22,7 @@ AsyncAray.prototype.get = function(index, done) {
 /**
  * @param {Function} done
  */
-AsyncAray.prototype.length = function(done) {
+AsyncAray.prototype.getLength = function(done) {
     var _this = this;
 
     process.nextTick(function() {
@@ -44,6 +44,17 @@ AsyncAray.prototype.swap = function(i, j, done) {
         _this._data[j] = temp;
 
         done();
+    });
+};
+
+/**
+ * @param {Function} done
+ */
+AsyncAray.prototype.getData = function(done) {
+    var _this = this;
+
+    process.nextTick(function() {
+        done(null, _this._data);
     });
 };
 
