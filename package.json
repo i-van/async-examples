@@ -5,6 +5,7 @@
   "main": "async_array.js",
   "author": "Ivan Nosov",
   "dependencies": {
-    "async": "~0.9.0"
+    "async": "~0.9.0",
+    "q": "~1.0.1"
   }
 }
