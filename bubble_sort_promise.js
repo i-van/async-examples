@@ -1,5 +1,6 @@
 
 var AsyncArray = require('./async_array'),
+    helpers = require('./helpers'),
     Q = require('q');
 
 function sort(data) {
@@ -9,14 +10,14 @@ function sort(data) {
         .then(function(length) {
             var i = 0;
 
-            return _while(
+            return helpers.while(
                 function() {
                     return i < length;
                 },
                 function() {
                     var j = i + 1;
 
-                    return _while(
+                    return helpers.while(
                         function() {
                             return j < length;
                         },
@@ -42,21 +43,6 @@ function sort(data) {
         .then(function() {
             return array.getData();
         });
-}
-
-function _while(condition, body) {
-    var deferred = Q.defer();
-
-    function loop() {
-        if (!condition()) {
-            return deferred.resolve();
-        }
-        Q.when(body(), loop, deferred.reject);
-    }
-
-    Q.nextTick(loop);
-
-    return deferred.promise;
 }
 
 sort([9, 5, 3, 7, 1]).then(
