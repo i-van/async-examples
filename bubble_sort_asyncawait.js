@@ -9,7 +9,7 @@ var sort = async.cps(function(data) {
 
     for (var i = 0; i < length; i++) {
         for (var j = i + 1;  j < length; j++) {
-            if (await(array.getByIndex(i)) > await(array.getByIndex(i))) {
+            if (await(array.getByIndex(i)) > await(array.getByIndex(j))) {
                 await(array.swap(i, j));
             }
         }
